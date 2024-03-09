@@ -22,6 +22,7 @@ const userSchema = new Schema(
           throw new Error("Email is invalid");
         }
       },
+    },
       password: {
         type: String,
         trim: true,
@@ -57,7 +58,7 @@ const userSchema = new Schema(
       occupation: String,
       location: String,
     },
-  },
+
   { timestamps: true }
 );
 
