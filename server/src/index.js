@@ -5,7 +5,8 @@ const port = process.env.PORT || 4545;
 const morgan = require("morgan");
 const cors = require("cors");
 const connect = require('./config/DB');
-const auth = require('./routes/authRoutes')
+const auth = require('./routes/authRoutes');
+const taskRouter = require('./routes/postRoutes')
 
 
 // custom middlewares
@@ -15,7 +16,8 @@ app.use(cors())
 
 
 // Api's
-app.use('/api/v1/auth',auth)
+app.use('/api/v1/auth',auth);
+app.use('/api/v1',taskRouter)
 
 
 // Server and DB connection

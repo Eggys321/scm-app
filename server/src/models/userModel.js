@@ -5,6 +5,7 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const crypto = require("crypto");
 
+
 const userSchema = new Schema(
   {
     userName: {
@@ -58,6 +59,7 @@ const userSchema = new Schema(
       occupation: String,
       location: String,
     },
+    
 
   { timestamps: true }
 );
@@ -81,7 +83,7 @@ userSchema.methods.comparePassword = async function (userPassword) {
 // generate jwt token
 userSchema.methods.generateToken = async function (params) {
   let token = jwt.sign(
-    { userId: this._id, role: this.role },
+    { userId: this._id, role: this.role,userName:this.userName },
     process.env.JWT_SECRETE
   );
   return token;
