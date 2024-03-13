@@ -6,18 +6,23 @@ const morgan = require("morgan");
 const cors = require("cors");
 const connect = require('./config/DB');
 const auth = require('./routes/authRoutes');
-const taskRouter = require('./routes/postRoutes')
+const taskRouter = require('./routes/postRoutes');
+const commentRouter = require('./routes/commentRoutes');
+const friendRouter = require('./routes/friendRoute')
 
 
 // custom middlewares
 app.use(express.json())
 app.use(morgan("dev"));
-app.use(cors())
+app.use(cors());
 
 
 // Api's
 app.use('/api/v1/auth',auth);
-app.use('/api/v1',taskRouter)
+app.use('/api/v1',taskRouter);
+app.use('/api/v1',commentRouter);
+app.use('/api/v1',friendRouter)
+
 
 
 // Server and DB connection

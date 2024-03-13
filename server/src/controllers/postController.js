@@ -1,3 +1,4 @@
+const Post = require("../models/postModel");
 const POST = require("../models/postModel");
 
 // Post ftn, C -- for create in CRUD operations
@@ -27,6 +28,17 @@ const createPost = async (req, res) => {
     console.log(error.message);
   }
 };
+
+// get all posts
+const getAllPosts = async (req, res)=> {
+  try {
+    const posts = await Post.find().populate('comments')
+    res.status(200).json({posts})
+  } catch (error) {
+    res.status(500).json(error);
+    console.log(error.message);
+  }
+}
 // like a post
 const likePost = async (req, res) => {
   try {
@@ -79,6 +91,7 @@ const removeLike = async (req, res) => {
 
 module.exports = {
   createPost,
+  getAllPosts,
   likePost,
   removeLike
 };
