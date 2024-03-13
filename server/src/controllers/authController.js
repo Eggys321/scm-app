@@ -150,6 +150,12 @@ const updateUserProfile = async (req, res) => {
   }
 };
 
+// get a user's friend(s)
+
+const getUserFriends = async (req,res)=>{
+  
+}
+
 // forgot password ftn
 
 // reset password ftn
@@ -161,5 +167,6 @@ module.exports = {
   isLoggedIn,
   logout,
   getUserProfile,
-  updateUserProfile
+  updateUserProfile,
+  getUserFriends
 };
