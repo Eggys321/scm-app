@@ -18,7 +18,7 @@ const createComment = async (req, res) => {
     const newComment = await COMMENT.create({ userId, text });
     // add comments to posts
     const post = await Post.findById({ _id: postId });
-    const updatePost = await Post.findByIdAndUpdate(
+    await Post.findByIdAndUpdate(
       { _id: postId },
       {
         comments: [...post.comments, newComment],
